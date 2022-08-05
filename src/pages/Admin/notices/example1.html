@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Abstain</title>
+        <script src="/Js/example1.js"></script>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .left {
+                background-color: blueviolet;
+                float: left;
+                width: 100px;
+                height: 100px;
+            }
+            .right {
+                background-color: palevioletred;
+                float: right;
+                width: 100px;
+                height: 100px;
+            }
+            .center {
+                background-color: aqua;
+                margin-left: 10px;
+                margin-right: 10px;
+                height: 100px;
+            }
+            .main ::after {
+                content: '';
+                display: block;
+                clear: both;
+            }
+            .main2 {
+                position: relative;
+            }
+            .left2 {
+                background-color: palevioletred;
+                position: absolute;
+                width: 100px;
+                height: 100px;
+                left: 0;
+            }
+            .right2 {
+                background-color: aqua;
+                position: absolute;
+                width: 100px;
+                height: 100px;
+                right: 0;
+            }
+            .center2 {
+                background-color: blueviolet;
+                position: absolute;
+                left: 100px;
+                right: 100px;
+                height: 100px;
+            }
+            .left3 {
+                background-color: aqua;
+                width: 100px;
+            }
+            .right3 {
+                background-color: blueviolet;
+                width: 100px;
+            }
+            .center3 {
+                background-color: palevioletred;
+            }
+            .main3 {
+                display: flex;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <article class="main3">
+            <div class="left3">left</div>
+            <div class="center3">center
+                <h2>弹性布局</h2>
+            </div>
+            <div class="right3">right</div>
+        </article>
+        <article class="main">
+            <div class="left">left</div>
+            
+            <div class="right">right</div>
+            <div class="center">center
+                <h2>浮动布局</h2>
+            </div>
+        </article>
+        <article class="main2">
+            <div class="left2">左</div>
+            <div class="center2">中
+                <h2>绝对定位</h2>
+            </div>
+            <div class="right2">右</div>
+        </article>
+        <!-- <audio>11</audio> -->
+        <!-- <div>
+            <input type="text" id="count" name="sumCount"/>
+            <input type="text" id="diff" name="diff"/>
+            <!-- <input type="text" id="date" name="date"/>
+            <input type="button" value="开始计时喽" onclick="Curse()"/>
+            <input type="button" value="停止！" onclick="clearTimeout(meter3)"/>
+            <!-- <input type="button" value="显示时间差" onclick="getDiff(time2,time1)"/> -->
+            <!-- <input type="button" value="现在几点嗷" onclick="Now()"/>
+        </div>
+        <div id="myDiv">Right click to Ctrl+click me to get a custom context menu.
+            Click anywhere else to get the default constext menu. </div>
+        <ul  id="myMune" style="position:absolute;visibility: hidden;background-color: silver;">
+            <li><a href="http://www.somewere.com">somewhere</a></li>
+            <li><a href="http://www.wrox.com">Wrox site</a></li>
+            <li><a href="http://www.somewhere_else.com">somewere-else</a></li> -->
+        <!-- </ul> --> 
+        <script>
+            // window.addEventListener("load",(event)=>{
+            //     let div = document.getElementById("myDiv");
+            //     div.addEventListener("contextmenu",(event)=>{
+            //         event.preventDefault();
+            //         let menu = document.getElementById("myMenu");
+            //         menu.style.left = event.clientX + "px";
+            //         menu.style.top = event.clientY + "px";
+            //         menu.style.visibility = "visible";
+            //     });
+            //     document.addEventListener("click",(event)=>{
+            //         document.getElementById("myMenu").style.visibility = "hidden";
+            //     });
+            // });
+            // var obj = {
+            //     name:'吴彬瑞',
+            //     age:20
+            // };
+            // var arr = [11,12,13,14,15];
+            // document.write("今天你学习了吗");
+            
+            // try{
+            //     document.write(gender);
+            // }
+            // catch(error){
+            //     let gender;
+            // }
+            // gender='man';
+            // console.log('\ngender:'+gender);
+            
+            // for(let j=0;j<5;++j){
+            //     setTimeout(()=>console.log(j),0);
+            // }
+            // var x=0
+            // function Curse(){
+            //     meter1=setInterval(()=>{
+            //     x++;
+            //     document.getElementById("count").value=x;
+            //     },1000);
+            // }
+            // function Now(){
+            //     meter2=setInterval(()=>{
+            //     const now=Date();
+            //     document.getElementById("date").value=now;  
+            //     },1000)
+            // }
+            // var time1=new Date(2021,9,20,5,20,13);
+            // var time2=new Date(2021,1,8,9,21,14);
+            // function getDiff(time1,time2){
+            //     const ms1=time1.getTime();
+            //     const ms2=time2.getTime();
+            //     const diff=Math.ceil((ms2-ms1)/1000);
+            //     const day=Math.floor(diff/(60*60*24));
+            //     const hour=Math.floor(diff%(60*60*24)/(60*60));
+            //     const min=Math.floor(diff%(60*60)/60);
+            //     const seconds=Math.floor(diff%60);
+            //     const obj={
+            //         day:day,
+            //         hour:hour,
+            //         min:min,
+            //         seconds:seconds
+            //     }
+            //     const str=obj.day+"天"+obj.hour+"小时"+obj.min+"分钟"+obj.seconds+"秒";
+            //     document.getElementById("diff").value=str;
+            // }
+            
+            
+            // let a=6,b=9;
+            // function simpleTag(strings,aValExpression,bValExpression,sumExpression){
+            //     console.log(strings);
+            //     console.log(aValExpression);
+            //     console.log(bValExpression);
+            //     console.log(sumExpression);
+            //     return 'foobar';
+            // }
+            // let untaggedResult=`${a}+${b}=${a+b}`;
+            // let taggedResult=simpleTag`${a}+${b}=${a+b}`;
+            // function buildUrl(){
+            //     let qs = "?debug=true";
+            //     let url;
+            //     with(location){
+            //         url = href + qs;
+            //     }
+            //     console.log(url);
+            // }
+            // buildUrl();
+            // let numberObject=new Number(10)
+            // let num=11
+            // alert(numberObject+num)
+            // let values = [1,2,3,4,5,6,7,,];
+            // values[494967294]=666;
+            // let max = Math.max(...values);
+            // alert(max);
+            // console.log(Array.from(values.entries()));
+            // let str=["w","s","n",undefined,"b","b"];
+            // alert(str.join("-"));
+            // let values=[0,1,5,10,15];
+            // values.sort((a,b)=>a<b?-1:a>b?1:0);
+            // alert(values);
+            
+            // const s1 = new Set(["val1","val2","val3"]);
+            // alert(s1.size);
+            // const s2 = new Set({
+            //     [Symbol.iterator]:function*(){
+            //         yield "val1";
+            //         yield "val2";
+            //         yield "val3";
+            //     }
+            // });
+            // alert(s2.size);
+
+            // const ws = new WeakSet();
+            // ws.add({});
+            // console.log(ws);
+            
+            // let arr1=[{}];
+            // let arr2=[...arr1];
+            // arr1[0].foo='bar';
+            // console.log(arr2[0]);
+
+            // let arr = ['foo','bar','baz'];
+            // let iter1 = arr[Symbol.iterator]();
+            // for(let item of iter1){
+            //     console.log(item);
+            // }
+            // for(let item of arr){
+            //     console.log(item);
+            // }
+
+            // function* nTimes(n){
+            //     while(n--){
+            //         yield;
+            //     }
+            // }
+            // for(let _ of nTimes(5)){
+            //     console.log('foo');
+            // }
+            
+            // let person={
+            //     name:'Matt',
+            //     age:27
+            // };
+            // let {name,job='Software engineer'}=person;
+            // console.log(name,job);
+            // console.log(person.job);
+            
+            // function outer(){
+            //     inner();
+            // }
+            // function inner(){
+            //     console.log(inner.caller)
+            // }
+            // outer();
+
+            // function fib(n){
+            //     if(n<2){
+            //         return n;
+            //     }
+            //     return fib(n-1)+fib(n-2);
+            // }
+            // console.log(fib(999));   浏览器爆炸
+
+            // "use strict"
+            // function fib(n){
+            //     return fibImpl(0,1,n);
+            // }
+            // function fibImpl(a,b,n){
+            //     if(n===0){
+            //         return a;
+            //     }
+            //     return fibImpl(b,a+b,n-1);
+            // }
+            // console.log(fib(999));
+            // prompt('please input');
+
+            // function employee(name, job, born){
+            //     this.name = name;
+            //     this.job = job;
+            //     this.born = born;
+            // }
+
+            // var bill = new employee("Bill Gates","Engineer",1985);
+            // console.log(bill.toSource());//只有Gecko核心浏览器支持该方法（Firefox)，返回该对象的源代码
+            
+            // let num = (function(x){delete x;return x;})(1);
+            // console.log(num);
+            
+            // var str1=new RegExp("e");
+            // document.write(str1.exec("hello"));
+
+            // let obj = {name: '222'};
+            // let _name = obj.name;
+            // Object.defineProperty(obj, 'name', {
+            // get() {
+            //     return _name;
+            // },
+            // set(newVal) {
+            //     console.log(newVal, _name);
+            //     _name = newVal;
+            // }
+            // })
+            // console.log(obj.name = '11');
+            // 
+            
+            // let map1 = [1,2,3]
+            // let map2 = map1.map(x=>x*x)
+            // console.log(map1,map2)
+
+            // map1.forEach((item,index,arr)=>arr[index] = item*item)
+            // console.log(map1)
+
+            // console.log('undefined'.indexOf())
+            // console.log('1  '.indexOf('',))
+            
+            // let a = function(){return arguments[0]+arguments[1]};
+            // console.log(a(1,1))
+            
+            // let a = [];
+            // console.log(a instanceof Object)
+
+            // let arr = [1,1,undefined,undefined,'','','a','a',{},{},NaN,NaN,null,null,true,true]
+            // arr1 = Array.from(new Set(arr))
+            // console.log(arr,arr1)
+            // for(let i=0;i<arr.length;i++){
+            //     for(let j=i+1;j<arr.length;j++){
+            //         if(arr[i]===arr[j]){
+            //             arr.splice(j,1);
+            //             j--;
+            //         }
+            //     }
+            // }
+            // let arr1 = [];
+            // for(let i=0;i<arr.length;i++){
+            //     if(arr1.indexOf(arr[i]) === -1){
+            //         arr1.push(arr[i])
+            //     }
+            // }
+            // let obj = {};
+            // for(let i=0;i<arr.length;i++){
+            //     if(!obj[arr[i]]){
+            //         arr1.push(arr[i])
+            //         obj[arr[i]]=1
+            //     }else{
+            //         obj[arr[i]]++
+            //     }
+            // }
+            // for(let i=0;i<arr.length;i++){
+            //     if(!obj.hasOwnProperty(typeof arr[i] + arr[i])){
+            //         obj[typeof arr[i] + arr[i]] = true
+            //         arr1.push(arr[i])
+            //     }
+            // }
+            // arr1 = arr.filter((item,index)=>{return arr.indexOf(item,0) === index})
+            // arr1 = arr.reduce((prev,cur)=>{prev.indexOf(cur)===-1 && prev.push(cur); return prev},[])
+            // arr1 = [...new Set(arr)]
+            // Array.prototype.distinct = function(){
+            //     return [...new Set(this)]
+                // return this.filter((item,index)=>{return this.indexOf(item,0) === index})
+            // }
+            // console.log(arr.distinct())
+            // console.log(arr1)
+            // 发布订阅中心, on-订阅, off取消订阅, emit发布, 内部需要一个单独事件中心caches进行存储;
+            // interface CacheProps {
+            // [key: string]: Array<((data?: unknown) => void)>;
+            // }
+
+            // class Observer {
+            // private caches: CacheProps = {}; // 事件中心
+            // on (eventName: string, fn: (data?: unknown) => void){ // eventName事件名-独一无二, fn订阅后执行的自定义行为
+            //     this.caches[eventName] = this.caches[eventName] || [];
+            //     this.caches[eventName].push(fn);
+            // }
+
+            // emit (eventName: string, data?: unknown) { // 发布 => 将订阅的事件进行统一执行
+            //     if (this.caches[eventName]) {
+            //     this.caches[eventName].forEach((fn: (data?: unknown) => void) => fn(data));
+            //     }
+            // }
+
+            // off (eventName: string, fn?: (data?: unknown) => void) { // 取消订阅 => 若fn不传, 直接取消该事件所有订阅信息
+            //     if (this.caches[eventName]) {
+            //     const newCaches = fn ? this.caches[eventName].filter(e => e !== fn) : [];
+            //     this.caches[eventName] = newCaches;
+            //     }
+            // }
+
+            // }
+                // 例如将 input 转成output的形式
+            // let input = [
+            //     {
+            //         id: 1, val: '学校', parentId: null
+            //     }, {
+            //         id: 2, val: '班级1', parentId: 1
+            //     }, {
+            //         id: 3, val: '班级2', parentId: 1
+            //     }, {
+            //         id: 4, val: '学生1', parentId: 2
+            //     }, {
+            //         id: 5, val: '学生2', parentId: 2
+            //     }, {
+            //         id: 6, val: '学生3', parentId: 3
+            //     },
+            // ]
+
+            // let output = {
+            //     id: 1,
+            //     val: '学校',
+            //     children: [{
+            //         id: 2,
+            //         val: '班级1',
+            //         children: [
+            //             {
+            //                 id: 4,
+            //                 val: '学生1',
+            //                 children: []
+            //             },
+            //             {
+            //                 id: 5,
+            //                 val: '学生2',
+            //                 children: []
+            //             }
+            //         ]
+            //     }, {
+            //         id: 3,
+            //         val: '班级2',
+            //         children: [{
+            //             id: 6,
+            //             val: '学生3',
+            //             children: []
+            //         }]
+            //     }]
+            // }
+
+            // // 代码实现
+            // function arrayToTree(array) {
+            //     let root = array[0]
+            //     array.shift()
+            //     let tree = {
+            //         id: root.id,
+            //         val: root.val,
+            //         children: array.length > 0 ? toTree(root.id, array) : []
+            //     }
+            //     return tree;
+            // }
+
+            // function toTree(parenId, array) {
+            //     let children = []
+            //     let len = array.length
+            //     for (let i = 0; i < len; i++) {
+            //         let node = array[i]
+            //         if (node.parentId === parenId) {
+            //             children.push({
+            //                 id: node.id,
+            //                 val: node.val,
+            //                 children: toTree(node.id, array)
+            //             })
+            //         }
+            //     }
+            //     return children
+            // }
+
+            // console.log(arrayToTree(input))
+            // 今日头条面试题
+
+            // async function async1() {
+
+            // console.log('async1 start')
+
+            // await async2()
+
+            // console.log('async1 end')
+
+            // }
+
+            // async function async2() {
+
+            // console.log('async2')
+
+            // }
+
+            // console.log('script start')
+
+            // setTimeout(function () {
+
+            // console.log('settimeout')
+
+            // })
+
+            // async1()
+
+            // new Promise(function (resolve) {
+
+            // console.log('promise1')
+
+            // resolve()
+
+            // }).then(function () {
+
+            // console.log('promise2')
+
+            // })
+
+            // console.log('script end')
+
+            // console.log('--------------------------')
+            // let a = function(){
+            //     return 1
+            // }
+            // console.log(typeof a,a instanceof Object,a.constructor)
+
+            // let p = new Promise(()=>{})
+            // setTimeout(console.log,0,p)
+            // let x = 1;
+            // function print(a){
+            //     console.log(a)
+            // }
+            // function b(callback){
+            //     setTimeout(()=>{x++;},2000)
+            //     callback(x)
+            // }
+            // console.log(x)
+            // b(print)
+            
+            // var promise = new Promise(function(resolve, reject){
+            // // ... some code
+            //     if (/* 异步操作成功 */) {
+            //         resolve(value);
+            //     } else {
+            //         reject(error);
+            //     }
+            // })
+
+            // function sleep(ms) {
+            //     return new Promise(function(resolve, reject) {
+            //         setTimeout(resolve, ms);
+            //     })
+            // }
+            // sleep(3000).then( ()=> console.log("finished"));
+            
+            // let promise = new Promise(function(resolve, reject){
+            //     console.log("AAA");
+            //     resolve()
+            // });
+            // promise.then(() => console.log("BBB"));
+            // console.log("CCC")
+
+            // // AAA
+            // // CCC
+            // // BBB
+            // document.onclick = function() {
+                // console.log('click')
+            // }
+            // let promise = new Promise(function(resolve, reject){
+            //     console.log("1");
+            //     resolve();
+            // });
+            // setTimeout(()=>console.log("2"), 3000);
+            // promise.then(() => console.log("3"));
+            // console.log("4");
+            // let p = new Promise((resolve, reject) => {
+                // resolve('ok');
+                // reject('error');
+                // setTimeout(() => {
+                //     // resolve('ok')
+                //     reject('no')
+                // }, 1000);
+            // });
+
+            // const res = p.then(value => {
+                // console.log(value);
+                // throw 'FAIL';
+            // },reason=>{
+                // console.warn(reason);
+            // });
+
+            // p.then(value =>{
+            //     alert(value);
+            // },reason=>{
+            //     alert(reason);
+            // });
+
+            // console.log(res)
+            // var id = 'Global';
+
+            // function fun1() {
+            //     // setTimeout中使用普通函数
+            //     setTimeout(function(){
+            //         console.log(this.id);
+            //     }, 2000);
+            // }
+
+            // function fun2() {
+            //     // setTimeout中使用箭头函数
+            //     setTimeout(() => {
+            //         console.log(this.id);
+            //     }, 2000)
+            // }
+
+            // fun1.call({id: 'Obj'});     // 'Global'
+
+            // fun2.call({id: 'Obj'});     // 'Obj'
+            
+            // var sc = {a:1};
+            // var sc2 = sc;
+            // sc2.b = 2;
+            // console.log(sc.b);
+            // function try1(obj) {
+            //     obj.a = 3;
+            // }
+            // console.log(sc2.a);
+            // try1(sc);
+            // console.log(sc2.a);
+
+            
+            // (function(){
+            //     var a = 3;
+            //     console.log(a + 3)
+            // })()
+            // var a = 4;
+            // console.log(a);
+
+            // function Person(color) {
+            //     console.log(this)
+            //     this.color = color
+                // this.getColor = function(){
+                //     console.log(this)
+                //     return this.color
+                // }
+                // this.setColor = function(){
+                //     console.log(this)
+                //     this.color = color
+                // }
+            //     this.color = color
+            //     function outSetColor(color){
+            //         // this.color = color
+            //         console.log(color)
+            //     }
+            //     return {
+            //         outSetColor:outSetColor
+            //     }
+            // }
+            // Person('red')
+            // let p = new Person('blue')
+            // console.log(p)
+            // p.getColor()
+            // let obj = {}
+            // p.setColor.call(obj)
+            // let foo = new Person('a')
+            // foo.outSetColor('b')
+            // console.log(foo)
+            // console.log(a)
+            // const a = 3
+            // fn()
+            // a()
+            // function fn(){
+            //     console.log('a')
+            //     // var a = 4
+            // }
+            // // fn()
+            // var a = function(){
+            //     console.log('a')
+            // }
+            
+            // var a = 1;
+            // function b(a){
+            //     if(a === 4) return
+            //     console.log(a)
+            //     b(a+1)
+            //     console.log(a)
+            // }
+            // b(a)
+            // console.log(a)
+
+            // function a(){}
+            // var a
+            // console.log(a)
+
+            // if(!(b in window)){
+            //     var b = 1
+            // }
+            // console.log(b)
+
+            
+            // function c(c){
+            //     console.log(c)
+            // }
+            // var c = 1
+            // c(c)
+            // console.log(c)
+
+            // var x = 1
+            // function p(){
+            //     console.log(x)
+            // }
+            // function q(f){
+            //     var x = 2
+            //     f()
+            // }
+            // q(p)
+
+            // var obj = {
+            //     fn: function(){
+            //         console.log(this.fn)
+            //     }
+            // }
+            // obj.fn()
+
+            // var obj = {
+            //     fn: function(){
+            //         console.log(1)
+            //     }
+            // }
+            // console.log(obj)
+
+            // function creatNew(){
+            //     let obj = {}
+            //     let constructor = [].shift.call(arguments)
+            //     obj = Object.create(constructor)
+            //     // obj._proto_ = constructor.prototype
+            //     let result = constructor.apply(obj,arguments)
+            //     return typeof result === 'object' ? result : obj
+            // }
+            // function People(name,age){
+            //     this.name = name
+            //     this.age = age
+            // }
+            // let p1 = creatNew(People,'Amy',20)
+            // console.log(p1.name,p1.age)
+
+            // (function() {
+            //     var a = b = 5;
+            // })();   
+            // console.log(b);
+            // console.log(a);
+            Function.prototype.mycall = function (context){
+                if(typeof this !== 'function'){
+                    throw new TypeError('not function')
+                }
+                context = context || window
+                context.fn = this
+                let args = [...arguments].slice(1)
+                let result = context.fn(...args)
+                delete context.fn
+                return result
+            }
+            var person = {
+                fullName: function(city, country) {
+                    return this.firstName + " " + this.lastName + "," + city + "," + country;
+                }
+            }
+            var person1 = {
+                firstName:"John",
+                lastName: "Doe"
+            }
+            // console.log(person.fullName.mycall(person1, "Oslo", "Norway"))
+            
+            Function.prototype.myapply = function (context){
+                if(typeof this !== 'function'){
+                    throw new TypeError('not function')
+                }
+                context = context || window
+                context.fn = this
+                let result = null
+                if(arguments[1]){
+                    result = context.fn(...arguments[1])
+                }else{
+                    result = context.fn()
+                }
+                delete context.fn
+                return result
+            }
+            // console.log(person.fullName.myapply(person1,["Oslo", "Norway"]))
+
+            Function.prototype.mybind = function (context){
+                if(typeof this !== 'function'){
+                    throw new TypeError('error')
+                }
+                let args = [...arguments].slice(1) 
+                // console.log(...arguments)  
+                let fn = this
+                return function Fn(){
+                    return fn.apply(
+                        this instanceof Fn ? this : context,
+                        args.concat(...arguments)
+                    )
+                }
+            }
+            this.x = 9    
+            let obj = {
+            x: 81,
+            getX: function() { return this.x; }
+            }
+            let obj1 = obj.getX
+            // obj1.mybind(obj)() //81
+            console.log(obj1.mybind(obj)())
+            // function getSc(){
+            //     return 'xf'
+            // }
+            // async function getXf(){
+            //     return 'sc'
+            // }
+            // async function lashi(){
+            //     const v1 = await getSc()
+            //     const v2 = await getXf()
+            //     console.log(v1,v2)
+            // }
+            // lashi()
+            // console.log(getSc(),getXf())
+
+            const [first,...rest] = [1,2,3,4,5]
+            console.log(first,rest)
+
+            </script>
+        </body>
+</html>

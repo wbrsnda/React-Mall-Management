@@ -1,0 +1,7 @@
+.login-form{
+    width: 480px;
+    position: relative;
+    left: 30%;
+    top: 100px;
+    transform: rotate3d(-50%,-50%,0);
+}
