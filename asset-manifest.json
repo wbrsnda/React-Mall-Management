@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/react/static/css/main.1ac32bc2.css",
-    "main.js": "/react/static/js/main.bc177c8f.js",
-    "static/js/787.a5ba2a94.chunk.js": "/react/static/js/787.a5ba2a94.chunk.js",
-    "static/media/p1.jpg": "/react/static/media/p1.d6fa7706018df8f862a4.jpg",
-    "index.html": "/react/index.html",
-    "main.1ac32bc2.css.map": "/react/static/css/main.1ac32bc2.css.map",
-    "main.bc177c8f.js.map": "/react/static/js/main.bc177c8f.js.map",
-    "787.a5ba2a94.chunk.js.map": "/react/static/js/787.a5ba2a94.chunk.js.map"
+    "main.css": "/React-Mall-Management/static/css/main.1ac32bc2.css",
+    "main.js": "/React-Mall-Management/static/js/main.c364bcd3.js",
+    "static/js/787.a5ba2a94.chunk.js": "/React-Mall-Management/static/js/787.a5ba2a94.chunk.js",
+    "static/media/p1.jpg": "/React-Mall-Management/static/media/p1.d6fa7706018df8f862a4.jpg",
+    "index.html": "/React-Mall-Management/index.html",
+    "main.1ac32bc2.css.map": "/React-Mall-Management/static/css/main.1ac32bc2.css.map",
+    "main.c364bcd3.js.map": "/React-Mall-Management/static/js/main.c364bcd3.js.map",
+    "787.a5ba2a94.chunk.js.map": "/React-Mall-Management/static/js/787.a5ba2a94.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1ac32bc2.css",
-    "static/js/main.bc177c8f.js"
+    "static/js/main.c364bcd3.js"
   ]
 }
